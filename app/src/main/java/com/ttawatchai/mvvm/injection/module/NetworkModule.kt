@@ -2,6 +2,8 @@ package com.ttawatchai.mvvm.injection.module
 
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.ttawatchai.mvvm.data.api.ApiService
+import com.ttawatchai.mvvm.utills.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -19,9 +21,17 @@ object NetworkModule {
     @Provides
     @Reusable
     @JvmStatic
+    internal fun provideApiService(@Named("provideRetrofit") retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
+
+
+    @Provides
+    @Reusable
+    @JvmStatic
     @Named("provideRetrofit")
     internal fun provideRetrofitInterface(): Retrofit {
-        val url: String = ""
+        val url: String = BASE_URL
 
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor { chain ->

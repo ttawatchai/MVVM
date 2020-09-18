@@ -1,6 +1,6 @@
 package com.ttawatchai.mvvm.utills
 
-const val BASE_URL: String = "http://35.240.214.18:5001"
+const val BASE_URL: String = "https://5e510330f2c0d300147c034c.mockapi.io/"
 
 
 

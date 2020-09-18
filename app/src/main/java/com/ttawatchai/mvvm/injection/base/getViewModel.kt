@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.ui.base
+package com.ttawatchai.mvvm.injection.base
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
