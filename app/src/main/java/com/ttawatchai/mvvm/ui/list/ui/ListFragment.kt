@@ -38,12 +38,6 @@ class ListFragment : BaseFragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setupUI()
-        subscribeToModel()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,18 +46,20 @@ class ListFragment : BaseFragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
+        setupUI()
+        subscribeToModel()
         return binding.root
     }
     private fun setupUI() {
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = MainAdapter(arrayListOf())
-        recyclerView.addItemDecoration(
+        binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
-                recyclerView.context,
-                (recyclerView.layoutManager as LinearLayoutManager).orientation
+                binding.recyclerView.context,
+                ( binding.recyclerView.layoutManager as LinearLayoutManager).orientation
             )
         )
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
     }
 
     private fun retrieveList(users: List<User>) {

@@ -7,6 +7,7 @@ import com.ttawatchai.mvvm.ui.list.ui.ListFragment
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_frame)
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.frame_content,
