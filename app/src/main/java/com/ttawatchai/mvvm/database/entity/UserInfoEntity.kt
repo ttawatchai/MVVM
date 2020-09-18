@@ -1,4 +1,4 @@
-package com.anywheretogo.claimdi360.database.entity
+package com.ttawatchai.mvvm.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

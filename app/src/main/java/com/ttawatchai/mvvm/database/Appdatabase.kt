@@ -4,15 +4,15 @@ import android.content.Context
 import androidx.room.*
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.anywheretogo.claimdi360.database.entity.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ttawatchai.mvvm.database.dao.UserDao
+import com.ttawatchai.mvvm.ui.list.model.User
 import java.util.*
 
 @Database(
     version = AppDatabase.VERSION,
-    entities = [UserInfoEntity::class],
+    entities = [User::class],
     exportSchema = false
 )
 @TypeConverters(AppDatabase.InfoConverters::class)

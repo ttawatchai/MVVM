@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.ttawatchai.mvvm.database.AppDatabase
+import com.ttawatchai.mvvm.database.dao.UserDao
 
 import dagger.Module
 import dagger.Provides
@@ -22,5 +23,8 @@ class DatabaseModule {
         .allowMainThreadQueries()
         .build()
 
+    @Provides
+    @Singleton
+    fun provideUserDao(database: AppDatabase): UserDao = database.userDao()
 
 }
