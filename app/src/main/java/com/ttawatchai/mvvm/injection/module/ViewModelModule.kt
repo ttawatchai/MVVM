@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ttawatchai.mvvm.injection.base.ViewModelFactory
 import com.ttawatchai.mvvm.injection.base.ViewModelKey
 import com.ttawatchai.mvvm.ui.list.ui.ListViewModel
+import com.ttawatchai.mvvm.ui.listpage.DetailViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,7 +17,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ListViewModel::class)
-    abstract fun bindCountriesViewModel(listViewModel: ListViewModel): ViewModel
+    abstract fun bindListViewModel(viewModel: ListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    abstract fun bindDetailViewModel(viewModel: DetailViewModel): ViewModel
 
     /**
      * Binds ViewModels factory to provide ViewModels.

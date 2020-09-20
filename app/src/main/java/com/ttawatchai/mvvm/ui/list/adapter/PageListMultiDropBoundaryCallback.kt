@@ -2,6 +2,7 @@ package com.ttawatchai.mvvm.ui.list.adapter
 
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
 import androidx.lifecycle.observe
@@ -15,14 +16,13 @@ import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.Dispatchers
 
 class PageListMultiDropBoundaryCallback(
+    private val parentLifecycleOwner: LifecycleOwner,
     private val repository: MainRepository,
     private val dao: UserDao
 ) : PagedList.BoundaryCallback<User>() {
 
-    private var requestedPage = 1
-    var disposable: Disposable? = null
-
     override fun onZeroItemsLoaded() {
+        Log.d("paglist","onZeroItemsLoaded")
         fetchUsers()
     }
 
@@ -52,10 +52,11 @@ class PageListMultiDropBoundaryCallback(
     }
 
     private fun fetchUsers() {
-        getUsers().observeForever(Observer {
+        getUsers().observe(parentLifecycleOwner, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        Log.d("paglist","onZeroItemsLoaded")
                         resource.data?.let { it1 -> dao.insert(it1) }
                     }
                     Status.ERROR -> {
@@ -66,25 +67,5 @@ class PageListMultiDropBoundaryCallback(
                 }
             }
         })
-
-
-
-
-        getUsers().let {
-            it.let { resource ->
-                when (resource.value?.status) {
-                    Status.SUCCESS -> {
-                        resource.value?.data?.let { it1 -> dao.insert(it1) }
-                    }
-                    Status.ERROR -> {
-                        Log.e("ERROR", "api_error${resource.value?.message}")
-                    }
-                    else ->
-                        Log.e("ERROR", "api error not return")
-                }
-            }
-        }
     }
-
-
 }

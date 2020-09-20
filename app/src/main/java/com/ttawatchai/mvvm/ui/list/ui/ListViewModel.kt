@@ -1,5 +1,7 @@
 package com.ttawatchai.mvvm.ui.list.ui
 
+import android.content.Context
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -31,34 +33,13 @@ class ListViewModel : ViewModel() {
     lateinit var dao: UserDao
     private val compositeDisposable = CompositeDisposable()
     val pagedListMultiTask = MutableLiveData<PagedList<User>>()
-    val pageListMultiDropBoundaryCallback =
-        PageListMultiDropBoundaryCallback(repository,dao)
 
-
-    fun getUsers() = liveData(Dispatchers.IO) {
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = repository.getUsers()))
-        } catch (exception: Exception) {
-            emit(
-                Resource.error(
-                    data = null,
-                    msg = exception.message ?: "Error Occurred!",
-                    error = ""
-                )
-            )
-        }
-    }
-
-    fun getMultiDrop() =
-        compositeDisposable.add(fetchOrGetTask().subscribe({
+    fun getMultiDrop(parentLifecycleOwner: LifecycleOwner) =
+        compositeDisposable.add(fetchOrGetTask(parentLifecycleOwner).subscribe({
             pagedListMultiTask.value = it
         }, { it.printStackTrace() }))
 
-//        multiDropHistorySize.value = getSizeTask()
-
-
-    private fun fetchOrGetTask(): Observable<PagedList<User>> {
+    private fun fetchOrGetTask(parentLifecycleOwner: LifecycleOwner): Observable<PagedList<User>> {
         return RxPagedListBuilder(
             dao.getDataSourcefactory(), PagedList.Config.Builder()
                 .setPageSize(5)
@@ -69,17 +50,18 @@ class ListViewModel : ViewModel() {
         )
             .setBoundaryCallback(
                 PageListMultiDropBoundaryCallback(
-                    repository, dao
-
+                    parentLifecycleOwner, repository, dao
                 )
             )
             .buildObservable()
     }
 
-    fun disposable() = pageListMultiDropBoundaryCallback.disposable
-
     fun updatePostList(adapter: MainAdapter, newPostList: PagedList<User>) {
         adapter.submitList(newPostList)
+    }
+
+    fun saveToDb(user: User) {
+        dao.updatDevice(user)
     }
 
 }

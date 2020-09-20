@@ -6,24 +6,39 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ttawatchai.mvvm.ui.list.model.User
 import com.ttawatchai.mvvm.R
-import com.ttawatchai.mvvm.ui.list.adapter.MainAdapter.DataViewHolder
-import kotlinx.android.synthetic.main.item_layout.view.imageViewAvatar
-import kotlinx.android.synthetic.main.item_layout.view.textViewUserEmail
-import kotlinx.android.synthetic.main.item_layout.view.textViewUserName
+import com.ttawatchai.mvvm.ui.list.model.User
+import kotlinx.android.synthetic.main.item_layout.view.*
 
-class MainAdapter() :   PagedListAdapter<User, MainAdapter.DataViewHolder>(PostDiffCallback()) {
+class MainAdapter(private val onClickListener: OnClickListener?,private val onClickFavListener: OnClickListener?) :
+    PagedListAdapter<User, MainAdapter.DataViewHolder>(PostDiffCallback()) {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(user: User) {
+        fun bind(onClickListener: OnClickListener?,onClickFavListener: OnClickListener?,user: User) {
             itemView.apply {
+
                 textViewUserName.text = user.name
                 textViewUserEmail.text = user.email
                 imageViewAvatar.setImageURI(user.avatar)
-
+                if (user.fav!!) {
+                    imageStar.setBackgroundResource(R.drawable.star__check)
+                } else {
+                    imageStar.setBackgroundResource(R.drawable.star)
+                }
+                lnImageStar.setOnClickListener {
+                    onClickFavListener?.clicklistener!!(user)
+                    if (user.fav!!) {
+                        imageStar.setBackgroundResource(R.drawable.star__check)
+                    } else {
+                        imageStar.setBackgroundResource(R.drawable.star)
+                    }
+                }
+                container.setOnClickListener {
+                    onClickListener?.clicklistener!!(user)
+                }
             }
+
         }
     }
 
@@ -36,10 +51,9 @@ class MainAdapter() :   PagedListAdapter<User, MainAdapter.DataViewHolder>(PostD
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bind(it)
+            holder.bind(onClickListener,onClickFavListener,it)
         }
     }
-
 
     class PostDiffCallback : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(
@@ -56,4 +70,8 @@ class MainAdapter() :   PagedListAdapter<User, MainAdapter.DataViewHolder>(PostD
             return oldItem.avatar == newItem.avatar && oldItem.email == newItem.email && oldItem.name == newItem.name
         }
     }
+
+    class OnClickListener(val clicklistener: (model: User) -> Unit) {
+        fun onClick(model: User) = clicklistener(model)
+   }
 }

@@ -1,6 +1,5 @@
 package com.ttawatchai.mvvm.injection.module
 
-import android.util.Log
 import com.google.gson.GsonBuilder
 import com.ttawatchai.mvvm.data.api.ApiService
 import com.ttawatchai.mvvm.utills.BASE_URL
