@@ -1,6 +1,5 @@
-package com.ttawatchai.mvvm.ui.list.ui
+package com.ttawatchai.mvvm.feature.listdata.ui
 
-import android.R.attr.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,8 +12,8 @@ import com.ttawatchai.mvvm.R
 import com.ttawatchai.mvvm.databinding.FragmentListBinding
 import com.ttawatchai.mvvm.injection.base.BaseFragment
 import com.ttawatchai.mvvm.injection.base.getViewModel
-import com.ttawatchai.mvvm.ui.list.adapter.MainAdapter
-import com.ttawatchai.mvvm.ui.listpage.DetailsFragment
+import com.ttawatchai.mvvm.feature.listdata.adapter.MainAdapter
+import com.ttawatchai.mvvm.feature.listdetail.DetailsFragment
 import kotlinx.android.synthetic.main.content_scrolling.view.*
 
 

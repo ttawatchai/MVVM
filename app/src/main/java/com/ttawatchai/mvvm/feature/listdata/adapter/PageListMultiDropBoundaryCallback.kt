@@ -1,23 +1,20 @@
-package com.ttawatchai.mvvm.ui.list.adapter
+package com.ttawatchai.mvvm.feature.listdata.adapter
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
-import androidx.lifecycle.observe
 import androidx.paging.PagedList
-import com.ttawatchai.mvvm.data.repository.MainRepository
-import com.ttawatchai.mvvm.database.dao.UserDao
-import com.ttawatchai.mvvm.ui.list.model.User
+import com.ttawatchai.mvvm.service.repository.ApiRepository
+import com.ttawatchai.mvvm.injection.database.dao.UserDao
+import com.ttawatchai.mvvm.feature.listdata.model.User
 import com.ttawatchai.networklibrary.model.Resource
 import com.ttawatchai.networklibrary.model.Status
-import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.Dispatchers
 
 class PageListMultiDropBoundaryCallback(
     private val parentLifecycleOwner: LifecycleOwner,
-    private val repository: MainRepository,
+    private val repository: ApiRepository,
     private val dao: UserDao
 ) : PagedList.BoundaryCallback<User>() {
 

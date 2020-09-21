@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.ui.list.adapter
+package com.ttawatchai.mvvm.feature.listdata.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ttawatchai.mvvm.R
-import com.ttawatchai.mvvm.ui.list.model.User
+import com.ttawatchai.mvvm.feature.listdata.model.User
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(private val onClickListener: OnClickListener?,private val onClickFavListener: OnClickListener?) :
@@ -17,7 +17,6 @@ class MainAdapter(private val onClickListener: OnClickListener?,private val onCl
 
         fun bind(onClickListener: OnClickListener?,onClickFavListener: OnClickListener?,user: User) {
             itemView.apply {
-
                 textViewUserName.text = user.name
                 textViewUserEmail.text = user.email
                 imageViewAvatar.setImageURI(user.avatar)

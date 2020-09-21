@@ -7,8 +7,8 @@ import com.ttawatchai.mvvm.injection.module.DatabaseModule
 import com.ttawatchai.mvvm.injection.module.NetworkModule
 import com.ttawatchai.mvvm.injection.module.NetworkModuleForMultiPart
 import com.ttawatchai.mvvm.injection.base.BaseFragment
-import com.ttawatchai.mvvm.ui.list.ui.ListViewModel
-import com.ttawatchai.mvvm.ui.listpage.DetailViewModel
+import com.ttawatchai.mvvm.feature.listdata.ui.ListViewModel
+import com.ttawatchai.mvvm.feature.listdetail.DetailViewModel
 import dagger.Component
 import javax.inject.Singleton
 

@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.ui.listpage
+package com.ttawatchai.mvvm.feature.listdetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.ttawatchai.mvvm.R
 import com.ttawatchai.mvvm.databinding.FragmentDetailBinding
 import com.ttawatchai.mvvm.injection.base.BaseFragment
 import com.ttawatchai.mvvm.injection.base.getViewModel
-import com.ttawatchai.mvvm.ui.list.model.User
+import com.ttawatchai.mvvm.feature.listdata.model.User
 
 
 class DetailsFragment : BaseFragment() {
@@ -40,11 +40,21 @@ class DetailsFragment : BaseFragment() {
     private fun setUi() {
         binding.tvName.text = viewModel.user.get()?.name
         binding.tvEmail.text = viewModel.user.get()?.email
+        binding.tvId.text = "#${viewModel.user.get()?.id}"
         binding.imageViewAvatar.setImageURI(viewModel.user.get()?.avatar)
         if (viewModel.user.get()?.fav!!) {
             binding.imageStar.setBackgroundResource(R.drawable.star__check)
         } else {
             binding.imageStar.setBackgroundResource(R.drawable.star)
+        }
+        binding.lnImageStar.setOnClickListener {
+            if (viewModel.user.get()?.fav!!) {
+                binding.imageStar.setBackgroundResource(R.drawable.star)
+            } else {
+                binding.imageStar.setBackgroundResource(R.drawable.star__check)
+            }
+            viewModel.updateDatabase()
+
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.ttawatchai.mvvm.ui.listpage.DetailViewModel" />
+            type="com.ttawatchai.mvvm.feature.listdetail.DetailViewModel" />
 
     </data>
 
@@ -18,6 +18,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/lnId"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_alignParentStart="true"
+            android:padding="16dp">
+            <TextView
+                android:id="@+id/tvId"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+             />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/lnImageStar"
@@ -38,11 +55,13 @@
             android:id="@+id/imageViewAvatar"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:padding="4dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            fresco:roundAsCircle="true"
+            fresco:placeholderImage="@drawable/ic_launcher_background"
             android:layout_below="@id/lnImageStar"
             tools:ignore="contentDescription" />
 

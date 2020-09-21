@@ -1,8 +1,8 @@
-package com.ttawatchai.mvvm.database.dao
+package com.ttawatchai.mvvm.injection.database.dao
 
 import androidx.paging.DataSource
 import androidx.room.*
-import com.ttawatchai.mvvm.ui.list.model.User
+import com.ttawatchai.mvvm.feature.listdata.model.User
 
 
 @Dao

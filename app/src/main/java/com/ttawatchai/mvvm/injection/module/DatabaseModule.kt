@@ -3,8 +3,8 @@ package com.ttawatchai.mvvm.injection.module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.ttawatchai.mvvm.database.AppDatabase
-import com.ttawatchai.mvvm.database.dao.UserDao
+import com.ttawatchai.mvvm.injection.database.AppDatabase
+import com.ttawatchai.mvvm.injection.database.dao.UserDao
 
 import dagger.Module
 import dagger.Provides

@@ -2,7 +2,7 @@ package com.ttawatchai.mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ttawatchai.mvvm.ui.list.ui.ListFragment
+import com.ttawatchai.mvvm.feature.listdata.ui.ListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ttawatchai.mvvm.ui.list.ui.ListViewModel" />
+            type="com.ttawatchai.mvvm.feature.listdata.ui.ListViewModel" />
 
     </data>
 

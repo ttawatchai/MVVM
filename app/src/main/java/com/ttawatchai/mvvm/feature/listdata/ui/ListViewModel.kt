@@ -1,23 +1,18 @@
-package com.ttawatchai.mvvm.ui.list.ui
+package com.ttawatchai.mvvm.feature.listdata.ui
 
-import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import com.ttawatchai.mvvm.MainApplication
-import com.ttawatchai.mvvm.data.repository.MainRepository
-import com.ttawatchai.mvvm.database.dao.UserDao
-import com.ttawatchai.mvvm.ui.list.adapter.MainAdapter
-import com.ttawatchai.mvvm.ui.list.adapter.PageListMultiDropBoundaryCallback
-import com.ttawatchai.mvvm.ui.list.model.User
-import com.ttawatchai.networklibrary.model.Resource
+import com.ttawatchai.mvvm.service.repository.ApiRepository
+import com.ttawatchai.mvvm.injection.database.dao.UserDao
+import com.ttawatchai.mvvm.feature.listdata.adapter.MainAdapter
+import com.ttawatchai.mvvm.feature.listdata.adapter.PageListMultiDropBoundaryCallback
+import com.ttawatchai.mvvm.feature.listdata.model.User
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.Observable
-import kotlinx.coroutines.Dispatchers
-import java.util.*
 import javax.inject.Inject
 
 class ListViewModel : ViewModel() {
@@ -27,7 +22,7 @@ class ListViewModel : ViewModel() {
     }
 
     @Inject
-    lateinit var repository: MainRepository
+    lateinit var repository: ApiRepository
 
     @Inject
     lateinit var dao: UserDao
