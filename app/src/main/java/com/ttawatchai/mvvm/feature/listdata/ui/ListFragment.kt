@@ -88,7 +88,7 @@ class ListFragment : BaseFragment() {
     }
 
     private fun subscribeToModel() {
-        binding.toolbar.flExit.setOnClickListener {
+        binding.itemBar.flExit.setOnClickListener {
             openAlertDialog()
         }
         viewModel.countFav.observe(this, Observer {

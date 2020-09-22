@@ -44,7 +44,6 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:fitsSystemWindows="true"
                     android:foregroundGravity="clip_horizontal|center"
                     android:gravity="center"
                     app:layout_collapseMode="pin">
@@ -70,18 +69,10 @@
                         android:textStyle="bold"
                         android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/title_right"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="right"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/email"
-                        android:foregroundGravity="right"
-                        android:visibility="gone" />
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -91,10 +82,11 @@
 
             <include layout="@layout/content_scrolling" />
         </androidx.core.widget.NestedScrollView>
+
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
