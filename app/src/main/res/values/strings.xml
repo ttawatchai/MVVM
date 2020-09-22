@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">mvvm</string>
+    <string name="title_have_car">คุณมีคนที่ถูกใจ</string>
+    <string name="title_select_follow">เลือกคนที่คุณต้องการดูข้อมูล</string>
 </resources>

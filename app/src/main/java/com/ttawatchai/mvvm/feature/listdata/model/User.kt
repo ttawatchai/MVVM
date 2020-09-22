@@ -14,7 +14,7 @@ data class User(
     val email: String,
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: String,
+    val id: Int,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "fav")
@@ -23,7 +23,7 @@ data class User(
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readString().toString(),
+        parcel.readString()!!.toInt(),
         parcel.readString().toString(),
         parcel.readByte() != 0.toByte()
     ) {

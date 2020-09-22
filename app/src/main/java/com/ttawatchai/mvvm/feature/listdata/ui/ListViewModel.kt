@@ -28,6 +28,7 @@ class ListViewModel : ViewModel() {
     lateinit var dao: UserDao
     private val compositeDisposable = CompositeDisposable()
     val pagedListMultiTask = MutableLiveData<PagedList<User>>()
+    val countFav = dao.getCount()
 
     fun getMultiDrop(parentLifecycleOwner: LifecycleOwner) =
         compositeDisposable.add(fetchOrGetTask(parentLifecycleOwner).subscribe({

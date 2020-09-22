@@ -9,4 +9,6 @@
         <item name="android:textColorPrimary">@color/colorPrimary</item>
     </style>
 
+    <style name="CollapsedAppBar" parent="android:TextAppearance.Widget.TextView">
+    </style>
 </resources>

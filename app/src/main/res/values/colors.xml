@@ -7,4 +7,9 @@
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#4a4a4a
     </color>
+    <color name="black">#000000</color>
+    <color name="white_two">#eaeaea</color>
+    <color name="graylight">#979797</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="transparent">#00000000</color>
 </resources>

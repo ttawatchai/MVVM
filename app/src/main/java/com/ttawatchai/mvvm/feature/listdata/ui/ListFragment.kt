@@ -1,19 +1,22 @@
 package com.ttawatchai.mvvm.feature.listdata.ui
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.ttawatchai.mvvm.R
 import com.ttawatchai.mvvm.databinding.FragmentListBinding
-import com.ttawatchai.mvvm.injection.base.BaseFragment
-import com.ttawatchai.mvvm.injection.base.getViewModel
 import com.ttawatchai.mvvm.feature.listdata.adapter.MainAdapter
 import com.ttawatchai.mvvm.feature.listdetail.DetailsFragment
+import com.ttawatchai.mvvm.injection.base.BaseFragment
+import com.ttawatchai.mvvm.injection.base.getViewModel
 import kotlinx.android.synthetic.main.content_scrolling.view.*
 
 
@@ -47,7 +50,44 @@ class ListFragment : BaseFragment() {
         return binding.root
     }
 
+    private fun initInstances(size:Int) {
+        val collapsingToolbarLayout: CollapsingToolbarLayout = binding.collapsingToolbar
+        val carSize =
+            getString(R.string.title_have_car) + " " + size + " คน"
+        collapsingToolbarLayout.isTitleEnabled = true
+        collapsingToolbarLayout.title = carSize
+        collapsingToolbarLayout.setCollapsedTitleTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+        collapsingToolbarLayout.setExpandedTitleColor(
+            ContextCompat.getColor(
+                context!!,
+                R.color.transparent
+            )
+        ) // transperent color = #00000000
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.CollapsedAppBar)
+        collapsingToolbarLayout.setExpandedTitleColor(
+            ContextCompat.getColor(
+                context!!,
+                R.color.transparent
+            )
+        )
+        collapsingToolbarLayout.setCollapsedTitleTextColor(
+            ContextCompat.getColor(
+                context!!,
+                R.color.colorWhite
+            )
+        )
+        binding.itemBar.tvCarHave.text = carSize
+        binding.itemBar.tvCarHave.setTypeface(
+            binding.itemBar.tvCarHave.typeface,
+            Typeface.BOLD
+        )
+    }
+
     private fun subscribeToModel() {
+        viewModel.countFav.observe(this, Observer {
+            initInstances(it)
+        })
         val adapter = MainAdapter(
             MainAdapter.OnClickListener {
                 val bundle = Bundle()
@@ -61,7 +101,7 @@ class ListFragment : BaseFragment() {
             },
             MainAdapter.OnClickListener {
                 it.apply {
-                    it.fav = !fav!!
+                    it.fav = !fav
                 }.also { user ->
                     viewModel.saveToDb(user)
                 }

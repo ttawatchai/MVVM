@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_section_car_have">55dp</dimen>
+    <dimen name="margin_top_section_24">24dp</dimen>
+    <dimen name="font_size_medium_16">16sp</dimen>
+    <dimen name="font_size_small_12">12sp</dimen>
+</resources>
