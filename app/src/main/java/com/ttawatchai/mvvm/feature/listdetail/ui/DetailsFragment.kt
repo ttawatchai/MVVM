@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.feature.listdetail
+package com.ttawatchai.mvvm.feature.listdetail.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.ttawatchai.mvvm.R
 import com.ttawatchai.mvvm.databinding.FragmentDetailBinding
 import com.ttawatchai.mvvm.injection.base.BaseFragment
 import com.ttawatchai.mvvm.injection.base.getViewModel
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.service.model.User
 
 
 class DetailsFragment : BaseFragment() {
@@ -17,7 +17,8 @@ class DetailsFragment : BaseFragment() {
 
 
     private val viewModel by lazy {
-        getViewModel<DetailViewModel>(DetailViewModel::class.java)
+        getViewModel<DetailViewModel>(
+            DetailViewModel::class.java)
     }
 
     override fun onCreateView(

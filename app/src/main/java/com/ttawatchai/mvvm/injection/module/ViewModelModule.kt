@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ttawatchai.mvvm.injection.base.ViewModelFactory
 import com.ttawatchai.mvvm.injection.base.ViewModelKey
 import com.ttawatchai.mvvm.feature.listdata.ui.ListViewModel
-import com.ttawatchai.mvvm.feature.listdetail.DetailViewModel
+import com.ttawatchai.mvvm.feature.listdetail.ui.DetailViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

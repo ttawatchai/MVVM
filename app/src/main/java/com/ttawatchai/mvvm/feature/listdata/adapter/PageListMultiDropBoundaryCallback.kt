@@ -6,8 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
 import androidx.paging.PagedList
 import com.ttawatchai.mvvm.service.repository.ApiRepository
-import com.ttawatchai.mvvm.injection.database.dao.UserDao
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.database.dao.UserDao
+import com.ttawatchai.mvvm.service.model.User
 import com.ttawatchai.networklibrary.model.Resource
 import com.ttawatchai.networklibrary.model.Status
 import kotlinx.coroutines.Dispatchers

@@ -1,5 +1,6 @@
 package com.ttawatchai.mvvm.feature.listdata.ui
 
+import android.app.AlertDialog
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +15,12 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.ttawatchai.mvvm.R
 import com.ttawatchai.mvvm.databinding.FragmentListBinding
 import com.ttawatchai.mvvm.feature.listdata.adapter.MainAdapter
-import com.ttawatchai.mvvm.feature.listdetail.DetailsFragment
+import com.ttawatchai.mvvm.feature.listdetail.ui.DetailsFragment
+import com.ttawatchai.mvvm.feature.login.LoginFragment
 import com.ttawatchai.mvvm.injection.base.BaseFragment
 import com.ttawatchai.mvvm.injection.base.getViewModel
 import kotlinx.android.synthetic.main.content_scrolling.view.*
+import kotlinx.android.synthetic.main.item_app_bar_main.view.*
 
 
 class ListFragment : BaseFragment() {
@@ -50,7 +53,7 @@ class ListFragment : BaseFragment() {
         return binding.root
     }
 
-    private fun initInstances(size:Int) {
+    private fun initCollapToolbar(size: Int) {
         val collapsingToolbarLayout: CollapsingToolbarLayout = binding.collapsingToolbar
         val carSize =
             getString(R.string.title_have_car) + " " + size + " คน"
@@ -85,14 +88,18 @@ class ListFragment : BaseFragment() {
     }
 
     private fun subscribeToModel() {
+        binding.toolbar.flExit.setOnClickListener {
+            openAlertDialog()
+        }
         viewModel.countFav.observe(this, Observer {
-            initInstances(it)
+            initCollapToolbar(it)
         })
         val adapter = MainAdapter(
             MainAdapter.OnClickListener {
                 val bundle = Bundle()
                 bundle.putParcelable("Object", it)
-                val nextFrag = DetailsFragment()
+                val nextFrag =
+                    DetailsFragment()
                 nextFrag.arguments = bundle
                 activity!!.supportFragmentManager.beginTransaction()
                     .replace(R.id.frame_content, nextFrag, "findThisFragment")
@@ -121,5 +128,27 @@ class ListFragment : BaseFragment() {
             }
         })
         binding.root.recyclerView.adapter = adapter
+    }
+
+    private fun openAlertDialog() {
+        val builder = AlertDialog.Builder(activity)
+        builder.setMessage("Are you sure you want to Exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { dialog, id ->
+                viewModel.dao.deleteAll()
+                prefsHelper.clearPref()
+                val nextFrag =
+                    LoginFragment()
+                activity!!.supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame_content, nextFrag, "findThisFragment")
+                    .addToBackStack(null)
+                    .remove(this)
+                    .commit()
+            }
+            .setNegativeButton("No") { dialog, id ->
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 }

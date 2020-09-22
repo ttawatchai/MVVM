@@ -7,10 +7,10 @@ import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import com.ttawatchai.mvvm.MainApplication
 import com.ttawatchai.mvvm.service.repository.ApiRepository
-import com.ttawatchai.mvvm.injection.database.dao.UserDao
+import com.ttawatchai.mvvm.database.dao.UserDao
 import com.ttawatchai.mvvm.feature.listdata.adapter.MainAdapter
 import com.ttawatchai.mvvm.feature.listdata.adapter.PageListMultiDropBoundaryCallback
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.service.model.User
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.Observable
 import javax.inject.Inject

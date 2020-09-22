@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.ttawatchai.mvvm.feature.listdetail.DetailViewModel" />
+            type="com.ttawatchai.mvvm.feature.listdetail.ui.DetailViewModel" />
 
     </data>
 
@@ -61,7 +61,6 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             fresco:roundAsCircle="true"
-            fresco:placeholderImage="@drawable/ic_launcher_background"
             android:layout_below="@id/lnImageStar"
             tools:ignore="contentDescription" />
 

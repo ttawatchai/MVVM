@@ -8,7 +8,8 @@ import com.ttawatchai.mvvm.injection.module.NetworkModule
 import com.ttawatchai.mvvm.injection.module.NetworkModuleForMultiPart
 import com.ttawatchai.mvvm.injection.base.BaseFragment
 import com.ttawatchai.mvvm.feature.listdata.ui.ListViewModel
-import com.ttawatchai.mvvm.feature.listdetail.DetailViewModel
+import com.ttawatchai.mvvm.feature.listdetail.ui.DetailViewModel
+import com.ttawatchai.mvvm.feature.login.LoginViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -23,4 +24,5 @@ interface ApplicationComponent {
     fun inject(baseFragment: BaseFragment)
     fun inject(viewmodel: ListViewModel)
     fun inject(viewmodel: DetailViewModel)
+    fun inject(viewmodel: LoginViewModel)
 }

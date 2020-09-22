@@ -1,6 +1,6 @@
 package com.ttawatchai.mvvm.service.api
 
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.service.model.User
 import retrofit2.http.GET
 
 interface ApiService {

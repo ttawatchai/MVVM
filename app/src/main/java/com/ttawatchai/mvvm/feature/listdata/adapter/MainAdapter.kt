@@ -7,7 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ttawatchai.mvvm.R
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.service.model.User
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(private val onClickListener: OnClickListener?,private val onClickFavListener: OnClickListener?) :

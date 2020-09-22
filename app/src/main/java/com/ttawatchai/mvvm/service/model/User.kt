@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.feature.listdata.model
+package com.ttawatchai.mvvm.service.model
 
 import android.os.Parcel
 import android.os.Parcelable

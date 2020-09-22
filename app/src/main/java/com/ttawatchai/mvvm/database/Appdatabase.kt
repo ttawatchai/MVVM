@@ -1,4 +1,4 @@
-package com.ttawatchai.mvvm.injection.database
+package com.ttawatchai.mvvm.database
 
 import android.content.Context
 import androidx.room.*
@@ -6,8 +6,8 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ttawatchai.mvvm.injection.database.dao.UserDao
-import com.ttawatchai.mvvm.feature.listdata.model.User
+import com.ttawatchai.mvvm.database.dao.UserDao
+import com.ttawatchai.mvvm.service.model.User
 import java.util.*
 
 @Database(
