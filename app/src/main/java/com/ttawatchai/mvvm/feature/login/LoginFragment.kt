@@ -34,23 +34,23 @@ class LoginFragment : BaseFragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         setUi()
         return binding.root
     }
 
     private fun setUi() {
         if (prefsHelper.name.isNotEmpty()) {
-            binding.usrusr.setText(prefsHelper.name)
+            viewModel.user.value = prefsHelper.name
         }
         binding.lnButton.setOnClickListener {
-            prefsHelper.name = viewModel.user.get().toString()
+            prefsHelper.name = viewModel.user.value!!
             Log.d("name", prefsHelper.name)
             val nextFrag =
                 ListFragment()
             activity!!.supportFragmentManager.beginTransaction()
                 .replace(R.id.frame_content, nextFrag, "findThisFragment")
-                .addToBackStack(null)
-                .remove(this)
                 .commit()
         }
     }

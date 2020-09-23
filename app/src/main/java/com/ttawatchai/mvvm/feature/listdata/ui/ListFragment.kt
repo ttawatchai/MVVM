@@ -88,7 +88,7 @@ class ListFragment : BaseFragment() {
     }
 
     private fun subscribeToModel() {
-        binding.itemBar.flExit.setOnClickListener {
+        binding.flExit.setOnClickListener {
             openAlertDialog()
         }
         viewModel.countFav.observe(this, Observer {
@@ -141,8 +141,6 @@ class ListFragment : BaseFragment() {
                     LoginFragment()
                 activity!!.supportFragmentManager.beginTransaction()
                     .replace(R.id.frame_content, nextFrag, "findThisFragment")
-                    .addToBackStack(null)
-                    .remove(this)
                     .commit()
             }
             .setNegativeButton("No") { dialog, id ->

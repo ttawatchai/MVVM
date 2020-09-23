@@ -87,7 +87,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="right"
                     android:background="@drawable/exit"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
             </FrameLayout>
 
         </LinearLayout>

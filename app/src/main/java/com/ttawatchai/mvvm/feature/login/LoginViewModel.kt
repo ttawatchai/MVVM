@@ -2,6 +2,7 @@ package com.ttawatchai.mvvm.feature.login
 
 import android.util.Log
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ttawatchai.mvvm.MainApplication
 import com.ttawatchai.mvvm.database.dao.UserDao
@@ -15,7 +16,7 @@ class LoginViewModel : ViewModel() {
         MainApplication.dataComponent.inject(this)
     }
 
-    val user = ObservableField<String>()
+    val user = MutableLiveData<String>()
 
 }
 
